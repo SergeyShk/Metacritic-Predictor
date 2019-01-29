@@ -5,13 +5,13 @@ class MetaCriticScraper:
 	def __init__(self):
 		pass
 
-	def get_games_list(self, platforms):
+	def get_games_list(self, platform):
 		self.games_list = []
 		page = 0
 		last_page = False
 
 		while (last_page == False):
-			url = 'https://www.metacritic.com/browse/games/release-date/available/' + platforms + '/metascore?page=' + str(page)
+			url = 'https://www.metacritic.com/browse/games/release-date/available/' + platform + '/date?page=' + str(page)
 			html = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}).content
 			soup = BeautifulSoup(html, 'html.parser')
 			if not soup.find('p', class_='no_data'):
@@ -80,7 +80,8 @@ class MetaCriticScraper:
 			self.game['critic_score'] = critics.find('span', itemprop='ratingValue').text.strip()
 			critics_reviews = self.soup.find('div', class_='module reviews_module critic_reviews_module')
 			score_counts = critics_reviews.find('ol', class_='score_counts hover_none')
-			self.game['critic_positive'], self.game['critic_mixed'], self.game['critic_negative'] = (str(score.text.split()[0]).replace(',', '') for score in score_counts.findAll('span', class_='count'))
+			self.game['critic_positive'], self.game['critic_mixed'], self.game['critic_negative'] = (str(score.text.split()[0]).replace(',', '') for score in 
+																										score_counts.findAll('span', class_='count'))
 			self.game['critic_count'] = str(int(self.game['critic_positive']) + int(self.game['critic_mixed']) + int(self.game['critic_negative']))
 		except:
 			print('WARNING: Problem getting critic score information')
@@ -92,7 +93,8 @@ class MetaCriticScraper:
 			self.game['user_score'] = users.find('div', class_='metascore_w').text.strip()
 			users_reviews = self.soup.find('div', class_='module reviews_module user_reviews_module')
 			score_counts = users_reviews.find('ol', class_='score_counts hover_none')
-			self.game['user_positive'], self.game['user_mixed'], self.game['user_negative'] = (str(score.text.split()[0]).replace(',', '') for score in score_counts.findAll('span', class_='count'))
+			self.game['user_positive'], self.game['user_mixed'], self.game['user_negative'] = (str(score.text.split()[0]).replace(',', '') for score in 
+																								score_counts.findAll('span', class_='count'))
 			self.game['user_count'] = str(int(self.game['user_positive']) + int(self.game['user_mixed']) + int(self.game['user_negative']))
 		except:
 			print('WARNING: Problem getting user score information')
@@ -102,9 +104,10 @@ class MetaCriticScraper:
 		try:
 			product_info = self.soup.find('div', class_='section product_details').find('div', class_='details side_details')
 			self.game['developer'] = product_info.find('li', class_='summary_detail developer').find('span', class_='data').text.strip()
-			self.game['genre'] = ', '.join([genre.text.strip() for genre in product_info.find('li', class_='summary_detail product_genre').findAll('span', class_='data')])
 			self.game['players'] = product_info.find('li', class_='summary_detail product_players').find('span', class_='data').text.strip()
 			self.game['rating'] = product_info.find('li', class_='summary_detail product_rating').find('span', class_='data').text.strip()
+			self.game['genre'] = ', '.join([genre.text.strip() for genre in 
+									product_info.find('li', class_='summary_detail product_genre').findAll('span', class_='data')])
 		except:
 			print('WARNING: Problem getting miscellaneous game information')
 			pass
