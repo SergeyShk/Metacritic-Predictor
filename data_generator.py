@@ -3,7 +3,7 @@ from metacritic_scraper import MetaCriticScraper
 
 platforms = ['ps4', 'xboxone', 'switch', 'pc', 'wii-u', '3ds', 'vita', 'ps3', 'ps2', 'ps',
            'xbox360', 'xbox', 'wii', 'ds', 'gamecube', 'n64', 'gba', 'psp', 'dreamcast']
-           
+          
 metacritic_scraper = MetaCriticScraper()
 for platform in platforms:
      games = []
