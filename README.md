@@ -17,7 +17,7 @@
 
 Содержит скрипты для скраппинга данных на языке Python:
 * [metacritic_scraper.py](Code/metacritic_scraper.py) - описывает класс для получения данных о видеоиграх с сайта metacritic.com;
-* mobygames_scraper.py -  описывает класс для получения данных о видеоиграх с сайта mobygames.com (в разработке);
+* [mobygames_scraper.py](Code/mobygames_scraper.py) -  описывает класс для получения данных о видеоиграх с сайта mobygames.com;
 * [data_generator.py](Code/data_generator.py) - позволяет формировать набор данных из загруженной информации.
 
 ### Notebooks
@@ -30,4 +30,4 @@
 Содержит исходные наборы данных:
 * metacritic_###.csv - данные с сайта metacritic.com по каждой платформе;
 * metacritic.csv - подготовленный набор данных по всем платформам с сайта metacritic.com;
-* mobygames.csv - данные с сайта mobygames.com по всем выходившим играм (в разработке).
+* mobygames.csv - данные с сайта mobygames.com по всем выходившим играм.
