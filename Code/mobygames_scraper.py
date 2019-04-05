@@ -146,11 +146,3 @@ class MobyGamesScraper:
 			pass
 
 		return self.game
-
-mobygames_scraper = MobyGamesScraper()
-#print(mobygames_scraper.get_game_info('https://www.mobygames.com/game/switch/fire-emblem-warriors'))
-#print(mobygames_scraper.get_game_info('https://www.mobygames.com/game/007-the-world-is-not-enough_'))
-#print(mobygames_scraper.get_games_list('https://www.mobygames.com/browse/games/1292-advanced-programmable-video-system/'))
-#print(mobygames_scraper.get_games_url('https://www.mobygames.com/browse/games/n64/list-games/'))
-#print(mobygames_scraper.get_games_count('https://www.mobygames.com/browse/games/altair-680/offset,0/so,0a/list-games/'))
-#print(mobygames_scraper.get_platforms_list())
